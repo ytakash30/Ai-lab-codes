@@ -1,0 +1,24 @@
+#DfS
+# Define a graph using an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+
+# Define a function for DFS
+def dfs(graph, start):
+    visited = set()      # Create a set to keep track of visited nodes
+    stack = [start]      # Create a stack for DFS traversal
+    while stack:
+        node = stack.pop()      # Get the next node from the stack
+        if node not in visited:
+            visited.add(node)   # Mark the node as visited
+            stack.extend(graph[node])   # Add the neighbors of the node to the stack
+    return visited
+
+# Test the function with the example graph
+print(dfs(graph, 'A'))
