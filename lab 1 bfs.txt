@@ -1,0 +1,24 @@
+#BFS
+# Define a graph using an adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+
+# Define a function for BFS
+def bfs(graph, start):
+    visited = set()     # Create a set to keep track of visited nodes
+    queue = [start]     # Create a queue for BFS traversal
+    while queue:
+        node = queue.pop(0)    # Get the next node from the front of the queue
+        if node not in visited:
+            visited.add(node)  # Mark the node as visited
+            queue.extend(graph[node])   # Add the neighbors of the node to the back of the queue
+    return visited
+
+# Test the function with the example graph
+print(bfs(graph, 'A'))
